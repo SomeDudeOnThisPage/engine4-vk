@@ -1,0 +1,6 @@
+### RESOURCES ###
+materials/*
+models/*
+shaders/.shadercache
+
+# for now, leave shaders and manifests in git for implementation reference

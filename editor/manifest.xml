@@ -1,0 +1,48 @@
+<manifest>
+    <!-- C00be TODO: Make primitives a dynamic, generated default model. -->
+    <model id="model.cube">
+        <mesh>models/cube.obj</mesh>
+    </model>
+
+    <model id="model.org.khronos.sponza">
+        <mesh>models/sponza/sponza.obj</mesh>
+        <!-- Material template with defined pipeline, which will be created if it not exists. Values will be mapped when loading the model, and concrete instances will be created. -->
+        <!-- Instances are indexed as "material.id#mtl-id" from the Material file, in this case "mtl.flat-color#Material__25", "mtl.flat-color#Material__23", etc... -->
+        <!-- Note that the material file needs to be defined in the mesh-file for this mapping to function! -->
+        <material id="mtl.flat-color" pipeline="pipeline.deferred.flat-color" template="true">
+            <geometry>
+                <combined>shaders/deferred/material-test.geometry.glsl</combined>
+            </geometry>
+            <lighting>
+                <combined>shaders/deferred/material-test.geometry.glsl</combined>
+            </lighting>
+            <uniform name="color" type="vector3f" mapping="AMBIENT"/>
+            <sampler2d name="albedo" binding="1" mapping="DIFFUSE"/>
+        </material>
+    </model>
+
+    <!-- Concrete Material instance with defined pipeline, which will be created if it not exists. -->
+    <!-- This should really only be used for one-off specific effect pipelines. Most materials should be mapped from Material files. -->
+    <material id="mtl.flat-color" pipeline="pipeline.deferred.flat-color">
+        <geometry>
+            <combined>shaders/deferred/material-test.geometry.glsl</combined>
+        </geometry>
+        <lighting>
+            <combined>shaders/deferred/material-test.geometry.glsl</combined>
+        </lighting>
+        <uniform name="color" type="vector3f">1.0 0.0 0.0</uniform>
+        <sampler2d name="albedo" binding="1">editor/materials/dev_white/altdev_generic01.png</sampler2d>
+    </material>
+
+    <!-- Concrete Material instance with defined pipeline, which will be created if it not exists. -->
+    <material id="mtl.flat-color1" pipeline="pipeline.deferred.flat-color">
+        <geometry>
+            <combined>shaders/deferred/material-test.geometry.glsl</combined>
+        </geometry>
+        <lighting>
+            <combined>shaders/deferred/material-test.geometry.glsl</combined>
+        </lighting>
+        <uniform name="color" type="vector3f">1.0 0.0 0.0</uniform>
+        <sampler2d name="albedo" binding="1">editor/materials/textures/spnza_bricks_a_diff.png</sampler2d>
+    </material>
+</manifest>

@@ -1,0 +1,19 @@
+<manifest>
+    <model id="model.loading" initialize="sync">
+        <mesh>models/loading.obj</mesh>
+    </model>
+    <model id="model.loading2" initialize="sync">
+        <mesh>models/plane.obj</mesh>
+    </model>
+
+    <material id="mtl.loading" pipeline="pipeline.deferred.flat-color" initialize="sync">
+        <geometry>
+            <combined>shaders/deferred/material-test.geometry.glsl</combined>
+        </geometry>
+        <lighting>
+            <combined>shaders/deferred/material-test.geometry.glsl</combined>
+        </lighting>
+        <uniform name="color" type="vector3f">1.0 1.0 1.0</uniform>
+        <sampler2d name="albedo" binding="1">editor/materials/dev_white/altdev_generic01.png</sampler2d>
+    </material>
+</manifest>
